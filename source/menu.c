@@ -39,7 +39,7 @@ void printOptionList(int cursor)
                                     "Downloads the Mod for Japanese Splatoon 2", \
                                     "Downloads the Mod for American Splatoon 2", \
                                     "Updates the App and Removes the Old Version", \
-                                    "<3" };
+                                    "Made by Gian and fixed by POGnator. Enjoy!" };
 
     SDL_Texture *textureArray[] = { ams_icon, ams_icon, ams_icon, app_icon, app_icon };
 
