@@ -2,7 +2,7 @@
 #define _UTIL_H_
 
 #define ROOT                    "/"
-#define APP_PATH                "/switch/Rainbow-Expansion-Injector/"
+#define APP_PATH                "switch/Rainbow-Expansion-Injector/"
 #define EU_OUTPUT               "/switch/Rainbow-Expansion-Injector/EU.zip"
 #define JP_OUTPUT               "/switch/Rainbow-Expansion-Injector/JP.zip"
 #define US_OUTPUT               "/switch/Rainbow-Expansion-Injector/US.zip"

@@ -2,6 +2,9 @@
 #include <time.h>
 #include <curl/curl.h>
 #include <switch.h>
+#include <errno.h>
+#include <unistd.h>
+#include <dirent.h>
 
 #include "download.h"
 #include "menu.h"
@@ -62,14 +65,39 @@ int download_progress(void *p, double dltotal, double dlnow, double ultotal, dou
 	return 0;
 }
 
+int listdir(){
+    DIR* dir;
+    struct dirent* ent;
+
+    dir = opendir("");//Open current-working-directory.
+    if(dir!=NULL)
+    {
+        char message[500];
+        while ((ent = readdir(dir)))
+        {
+            strcat(message, ent->d_name);
+            strcat(message, "\n");
+        }
+        errorBox(350,250,message);
+        closedir(dir);
+        return 0;
+    }
+    return 1;
+}
+
 int downloadFile(const char *url, const char *output, int api_mode)
 {
     CURL *curl = curl_easy_init();
     if (curl)
     {
+        if(mkdir("switch/Rainbow-Expansion-Injector", 0777)==-1){
+            errorBox(350,250,"mkdir failed");
+        };
+        listdir();
         FILE *fp = fopen(output, "wb");
         if (fp)
         {
+            errorBox(350,250,"fp true");
             struct MemoryStruct chunk;
             chunk.memory = malloc(1);
             chunk.size = 0;
@@ -106,7 +134,8 @@ int downloadFile(const char *url, const char *output, int api_mode)
         }
         fclose(fp);
     }
-
-    errorBox(350, 250, "Download failed...");
+    char* errorMessage = "Download failed: ";
+    strcat(errorMessage, strerror(errno));
+    errorBox(350, 250, errorMessage);
     return 1;
 }
