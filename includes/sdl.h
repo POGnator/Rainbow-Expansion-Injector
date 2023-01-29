@@ -67,7 +67,7 @@ void imageLoad(SDL_Texture **texture, char *path);                              
 void imageLoadMem(SDL_Texture **texture, void *data, int size);                     //load image from memory
 
 void drawText(TTF_Font *font, int x, int y, SDL_Color colour, const char *text);    //draw text to screen
-void drawButton(TTF_Font *font, u_int16_t btn, int x, int y, SDL_Colour colour);    //draw button to screen
+void drawButton(TTF_Font *font, uint16_t btn, int x, int y, SDL_Colour colour);    //draw button to screen
 void drawImage(SDL_Texture *texture, int x, int y);                                 //draw image to screen from texture
 void drawImageScale(SDL_Texture *texture, int x, int y, int w, int h);              //scale the image drawn to screen
 void drawShape(SDL_Colour colour, int x, int y, int w, int h);                      //draw shap (rect)
